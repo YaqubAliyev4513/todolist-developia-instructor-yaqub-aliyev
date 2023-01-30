@@ -24,7 +24,11 @@ public class LauncherClass extends Application {
     public void start(Stage stage) throws Exception {
        Parent root = FXMLLoader.load(getClass().getResource("resources/index.fxml"));
        stage.setTitle("To Do List project(by DEA Instructor Yaqub Aliyev)");
-       stage.setScene(new Scene(root,300,275));
+       stage.setScene(new Scene(root,stage.getWidth(),stage.getHeight()));
+       
+       stage.setResizable(false);
+       stage.setFullScreen(false);
+       
        stage.show();
     }
     
