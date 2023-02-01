@@ -73,17 +73,17 @@
                      </font>
                   </Label>
                   <TextField fx:id="searchTF" promptText="Nəsə axtar.." style="-fx-background-radius: 10;" />
-                  <Button fx:id="insertButton" mnemonicParsing="false" styleClass="button-64" text="Daxil et" textFill="#f70c0c">
+                  <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertButtonPressed" styleClass="button-64" text="Daxil et" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updateButton" layoutX="256.0" layoutY="15.0" mnemonicParsing="false" text="Yadda saxla" textFill="#f70c0c">
+                  <Button fx:id="updateButton" layoutX="256.0" layoutY="15.0" mnemonicParsing="false" onAction="#updateButtonPressed" text="Yadda saxla" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteButton" layoutX="334.0" layoutY="15.0" mnemonicParsing="false" text="Sil" textFill="#f70c0c">
+                  <Button fx:id="deleteButton" layoutX="334.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteButtonPressed" text="Sil" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
