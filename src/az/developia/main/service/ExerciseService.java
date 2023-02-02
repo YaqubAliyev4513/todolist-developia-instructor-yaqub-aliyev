@@ -6,6 +6,7 @@ package az.developia.main.service;
 
 import az.developia.main.model.Exercise;
 import az.developia.main.repository.ExerciseRepository;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -16,6 +17,15 @@ public class ExerciseService {
    
    public static void insertExercise(Exercise e){
        exerciseRepository.insertExercise(e);
+   }
+   
+   public static void updateExercise(Exercise e){
+      
+       exerciseRepository.updateExercise(e);
+   }
+   
+   public static ObservableList<Exercise> getExercises(){
+       return exerciseRepository.getExercises();
    }
     
 }

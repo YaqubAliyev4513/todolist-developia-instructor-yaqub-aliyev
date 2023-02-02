@@ -18,6 +18,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class ExerciseController implements Initializable{
 
@@ -61,7 +63,7 @@ public class ExerciseController implements Initializable{
     private TableColumn<?, ?> exerciseCol;
 
     @FXML
-    private TableView<?> exercisesTable;
+    private TableView<Exercise> exercisesTable;
 
     @FXML
     private TableColumn<?, ?> idCol;
@@ -112,6 +114,7 @@ public class ExerciseController implements Initializable{
          e.setRegisterDate(registerDate);
          e.setStatus(status);
          exerciseService.insertExercise(e);
+         loadExercises();
          }else{
              System.out.println("Melumatlar tam deyil");
          }
@@ -128,12 +131,63 @@ public class ExerciseController implements Initializable{
 
     @FXML
     void updateButtonPressed(ActionEvent event) {
-
+      Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
+      
+      if(selectedExercise==null){
+          System.out.println("Element seçilməyib");
+      }else{
+         Integer id = selectedExercise.getId();
+          
+         String task = taskTF.getText();
+         String category = String.valueOf(categoryCB.getValue());
+         String day = dayTF.getText();
+         LocalDateTime registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
+         if(task.trim().length()>0&&category!=null&&day.trim().length()>0&&registerDate!=null){
+         Exercise e = new Exercise();    
+         e.setId(id);
+         e.setTask(task);
+         e.setCategory(category);
+         e.setDay(Integer.parseInt(day));
+         e.setRegisterDate(registerDate);
+         exerciseService.updateExercise(e);
+         loadExercises();
+         }else{
+             System.out.println("Melumatlar duzgun deyil");
+         }
+         
+         } 
+      }
+    
+      @FXML
+    void exercisesTableMousePressed(MouseEvent event) {
+        Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
+          System.out.println("1");
+        if(selectedExercise != null){
+            taskTF.setText(selectedExercise.getTask());
+            categoryCB.setValue(selectedExercise.getCategory());
+            dayTF.setText(String.valueOf(selectedExercise.getDay()));
+            dateDP.setValue(selectedExercise.getRegisterDate().toLocalDate());
+        }
     }
+    
+    private void loadExercises(){
+         exercisesTable.setItems(exerciseService.getExercises());
+    }
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+         exerciseCol.setCellValueFactory(new PropertyValueFactory<>("task"));
+         categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
+         dayCol.setCellValueFactory(new PropertyValueFactory<>("day"));
+         dateCol.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
+         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));  
+        
       categoryCB.getItems().addAll("Education","IT");
+      loadExercises();
+       
     }
     
 

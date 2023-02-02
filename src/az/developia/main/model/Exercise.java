@@ -12,11 +12,25 @@ import java.time.LocalDateTime;
  * @author user
  */
 public class Exercise {
+   private Integer id;
    private String task;
    private String category;
-   private int day;
+   private Integer day;
    private LocalDateTime registerDate;
    private String status;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+   
+   
+   
+    public Integer getId() {
+        return id;
+    }
+   
+   
 
     public LocalDateTime getRegisterDate() {
         return registerDate;
@@ -60,6 +74,13 @@ public class Exercise {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Exercise{" + "id=" + id + ", task=" + task + ", category=" + category + ", day=" + day + ", registerDate=" + registerDate + ", status=" + status + '}';
+    }
+    
+    
    
    
    
