@@ -54,6 +54,18 @@ public class ExerciseRepository {
         }
     }
     
+    public  void deleteAllExercises(){
+        try {
+            createConnection();
+            Statement s = connection.createStatement();
+            s.execute("delete  from exercises");
+            s.close();
+            connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
     public  void deleteExercise(Integer id){
         try {
             createConnection();

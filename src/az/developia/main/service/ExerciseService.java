@@ -28,6 +28,10 @@ public class ExerciseService {
        exerciseRepository.deleteExercise(id);
    }
    
+   public void deleteAllExercises(){
+       exerciseRepository.deleteAllExercises();
+   }
+   
    public  ObservableList<Exercise> getExercises(){
        return exerciseRepository.getExercises();
    }
