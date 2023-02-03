@@ -93,12 +93,12 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </CheckBox>
-                  <Button fx:id="newCategoryButton" layoutX="256.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Yeni Kateqoriya" textFill="#f70c0c">
+                  <Button fx:id="newCategoryButton" layoutX="256.0" layoutY="15.0" mnemonicParsing="false" onAction="#newCategoryButtonPressed" prefHeight="30.0" prefWidth="131.0" text="Yeni Kateqoriya" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteCategoryButton" layoutX="603.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="Kateqoriyanı sil" textFill="#f70c0c">
+                  <Button fx:id="deleteCategoryButton" layoutX="603.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteCategoryButtonPressed" prefHeight="30.0" prefWidth="137.0" text="Kateqoriyanı sil" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -113,23 +113,23 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <RadioButton fx:id="allRB" mnemonicParsing="false" text="Hamısı" textFill="#e1550f">
+                  <RadioButton fx:id="allRB" mnemonicParsing="false" onAction="#allRBPressed" text="Hamısı" textFill="#e1550f">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="completedRB" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" text="Həll olanlar" textFill="#e1550f">
+                  <RadioButton fx:id="completedRB" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#completedRBPressed" text="Həll olanlar" textFill="#e1550f">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="noCompletedRB" layoutX="95.0" layoutY="15.0" mnemonicParsing="false" text="Həll olmuyanlar" textFill="#e1550f">
+                  <RadioButton fx:id="notCompletedRB" layoutX="95.0" layoutY="15.0" mnemonicParsing="false" onAction="#notCompletedRBPressed" text="Həll olmuyanlar" textFill="#e1550f">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </RadioButton>
                   <Label fx:id="infoLB" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: #9BA19B; -fx-background-radius: 10;" />
-                  <Button fx:id="changeStatusButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Statusu dəyiş" textFill="#f70c0c">
+                  <Button fx:id="changeStatusButton" mnemonicParsing="false" onAction="#changeStatusButtonPressed" prefHeight="30.0" prefWidth="131.0" text="Statusu dəyiş" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

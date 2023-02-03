@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
  * @author user
  */
 public class ExerciseService {
-   private  ExerciseRepository exerciseRepository =  new ExerciseRepository();
+   private final  ExerciseRepository exerciseRepository =  new ExerciseRepository();
    
    public  void insertExercise(Exercise e){
        exerciseRepository.insertExercise(e);

@@ -1,6 +1,8 @@
 package az.developia.main.controller;
 
+import az.developia.main.model.Category;
 import az.developia.main.model.Exercise;
+import az.developia.main.service.CategoryService;
 import az.developia.main.service.ExerciseService;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -82,7 +84,7 @@ public class ExerciseController implements Initializable {
     private Button newCategoryButton;
 
     @FXML
-    private RadioButton noCompletedRB;
+    private RadioButton notCompletedRB;
 
     @FXML
     private TextField searchTF;
@@ -97,6 +99,8 @@ public class ExerciseController implements Initializable {
     private Button updateButton;
 
     private final ExerciseService exerciseService = new ExerciseService();
+
+    private final CategoryService categoryService = new CategoryService();
 
     @FXML
     void insertButtonPressed(ActionEvent event) {
@@ -171,7 +175,7 @@ public class ExerciseController implements Initializable {
             } else {
                 registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
             }
-            
+
             if (task.trim().length() > 0 && category != null && day.trim().length() > 0 && registerDate != null) {
                 Exercise e = new Exercise();
                 e.setId(id);
@@ -199,8 +203,64 @@ public class ExerciseController implements Initializable {
         }
     }
 
+    @FXML
+    void newCategoryButtonPressed(ActionEvent event) {
+        String category = JOptionPane.showInputDialog("Yeni kateqoriyanin adini daxil edin");
+
+        if (category != null) {
+            Category c = new Category();
+            c.setCategory(category);
+            categoryService.insertCategory(c);
+            loadCategories();
+        }
+    }
+
+    @FXML
+    void deleteCategoryButtonPressed(ActionEvent event) {
+
+        String category = categoryCB.getValue();
+
+        if (category != null) {
+
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, category + " kateqoriyasını silməkdə əminsizmi?", "Təhlükə", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                Category c = new Category();
+                c.setCategory(category);
+                categoryService.deleteCategory(c);
+                loadCategories();
+            }
+
+        }
+    }
+
+    @FXML
+    void allRBPressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void completedRBPressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void notCompletedRBPressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void changeStatusButtonPressed(ActionEvent event) {
+
+    }
+
     private void loadExercises() {
         exercisesTable.setItems(exerciseService.getExercises());
+    }
+
+    private void loadCategories() {
+        categoryCB.getItems().clear();
+        categoryCB.getItems().addAll(categoryService.getCategories());
     }
 
     @Override
@@ -213,9 +273,8 @@ public class ExerciseController implements Initializable {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        categoryCB.getItems().addAll("Education", "IT");
         loadExercises();
-
+        loadCategories();
     }
 
 }
