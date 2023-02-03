@@ -92,7 +92,7 @@ public class ExerciseController implements Initializable{
     @FXML
     private Button updateButton;
     
-    private static ExerciseService exerciseService;
+    private final ExerciseService exerciseService = new ExerciseService();
     
     
     @FXML
@@ -170,7 +170,6 @@ public class ExerciseController implements Initializable{
       @FXML
     void exercisesTableMousePressed(MouseEvent event) {
         Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
-          System.out.println("1");
         if(selectedExercise != null){
             taskTF.setText(selectedExercise.getTask());
             categoryCB.setValue(selectedExercise.getCategory());

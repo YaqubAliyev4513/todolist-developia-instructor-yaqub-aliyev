@@ -13,22 +13,22 @@ import javafx.collections.ObservableList;
  * @author user
  */
 public class ExerciseService {
-   private static ExerciseRepository exerciseRepository;
+   private  ExerciseRepository exerciseRepository =  new ExerciseRepository();
    
-   public static void insertExercise(Exercise e){
+   public  void insertExercise(Exercise e){
        exerciseRepository.insertExercise(e);
    }
    
-   public static void updateExercise(Exercise e){
+   public  void updateExercise(Exercise e){
       
        exerciseRepository.updateExercise(e);
    }
    
-   public static void deleteExercise(Integer id){
+   public  void deleteExercise(Integer id){
        exerciseRepository.deleteExercise(id);
    }
    
-   public static ObservableList<Exercise> getExercises(){
+   public  ObservableList<Exercise> getExercises(){
        return exerciseRepository.getExercises();
    }
     

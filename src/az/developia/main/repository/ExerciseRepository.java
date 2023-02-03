@@ -4,7 +4,6 @@
  */
 package az.developia.main.repository;
 
-import az.developia.main.database.Database;
 import az.developia.main.model.Exercise;
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -17,53 +16,65 @@ import javafx.collections.ObservableList;
  */
 public class ExerciseRepository {
 
-    private static Connection conn = null;
-
-    public static void insertExercise(Exercise e) {
+    private Connection connection;
+    
+    
+    public void createConnection(){
         try {
-            conn = new Database().getConn();
-            Statement s = conn.createStatement();
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/todolist-developia-instructor-yaqub-aliyev", "root", "1234");          
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+
+    public  void insertExercise(Exercise e) {
+        try {
+            createConnection();
+            Statement s = connection.createStatement();
             s.execute("insert into exercises (task,category,day,registerdate,status) values ('" + e.getTask() + "','" + e.getCategory() + "','" + e.getDay() + "','" + e.getRegisterDate() + "','" + e.getStatus() + "') ");
             s.close();
-            
+            connection.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
     
-    public static void updateExercise(Exercise e) {
+    public void updateExercise(Exercise e) {
         try {
-            conn = new Database().getConn();
-            Statement s = conn.createStatement();
+            createConnection();
+            Statement s = connection.createStatement();
             s.execute("update exercises set task = '" + e.getTask() + "',category = '" + e.getCategory() + "', day = '" + e.getDay() + "', registerdate = '" + e.getRegisterDate() + "' where id="+e.getId()+"   ");
             s.close();
-            conn.close();
+            connection.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
     
-    public static void deleteExercise(Integer id){
+    public  void deleteExercise(Integer id){
         try {
-            conn = new Database().getConn();
-            Statement s = conn.createStatement();
+            createConnection();
+            Statement s = connection.createStatement();
             s.execute("delete from exercises  where id="+id+"   ");
             s.close();
-            conn.close();
+            connection.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
     
     
-    public static ObservableList<Exercise> getExercises() {
+    public  ObservableList<Exercise> getExercises() {
         
         
         ObservableList<Exercise> exercises=FXCollections.observableArrayList();
         
         try {
-             conn = new Database().getConn();
-             Statement s=conn.createStatement();
+             createConnection();
+             Statement s=connection.createStatement();
            
              ResultSet r=s.executeQuery("SELECT * FROM exercises");
              
@@ -82,6 +93,7 @@ public class ExerciseRepository {
              
            r.close();
            s.close();
+           connection.close();
         } catch (Exception ex) {
            
             ex.printStackTrace();
