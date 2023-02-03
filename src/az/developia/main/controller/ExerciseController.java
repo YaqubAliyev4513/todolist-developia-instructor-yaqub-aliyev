@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,6 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 
 public class ExerciseController implements Initializable {
@@ -200,6 +202,16 @@ public class ExerciseController implements Initializable {
             categoryCB.setValue(selectedExercise.getCategory());
             dayTF.setText(String.valueOf(selectedExercise.getDay()));
             dateDP.setValue(selectedExercise.getRegisterDate().toLocalDate());
+            
+              String status = selectedExercise.getStatus();
+            if (status.equals("Həll olunmayan")) { 
+               infoLB.setPadding(new Insets(3,3,3,23));
+               infoLB.setTextFill(Color.web("#FF2819"));
+            } else {
+                infoLB.setPadding(new Insets(3,3,3,34));
+                infoLB.setTextFill(Color.web("#50FFDC"));
+            }
+            infoLB.setText(status);
         }
     }
 
@@ -251,6 +263,26 @@ public class ExerciseController implements Initializable {
 
     @FXML
     void changeStatusButtonPressed(ActionEvent event) {
+        Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
+
+        if (selectedExercise != null) {
+
+            Integer id = selectedExercise.getId();
+            String status = selectedExercise.getStatus();
+
+            if (status.equals("Həll olunmayan")) {
+                
+                status = "Həll olunan";                
+                exerciseService.changeStatus(id, status);
+                
+            } else {
+                status = "Həll olunmayan";
+                exerciseService.changeStatus(id, status);
+                
+            }
+            loadExercises();
+
+        }
 
     }
 

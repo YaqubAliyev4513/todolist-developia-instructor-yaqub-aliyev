@@ -20,7 +20,6 @@ public class ExerciseService {
    }
    
    public  void updateExercise(Exercise e){
-      
        exerciseRepository.updateExercise(e);
    }
    
@@ -30,6 +29,10 @@ public class ExerciseService {
    
    public void deleteAllExercises(){
        exerciseRepository.deleteAllExercises();
+   }
+   
+   public void changeStatus(Integer id,String status){
+       exerciseRepository.updateStatusColumnInExercise(id, status);
    }
    
    public  ObservableList<Exercise> getExercises(){

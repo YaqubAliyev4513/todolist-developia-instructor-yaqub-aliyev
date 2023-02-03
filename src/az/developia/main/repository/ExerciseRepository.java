@@ -54,6 +54,18 @@ public class ExerciseRepository {
         }
     }
     
+    public void updateStatusColumnInExercise(Integer id,String status){
+        try {
+            createConnection();
+            Statement s = connection.createStatement();
+            s.execute("update exercises set status = '"+status+"'  where id="+id+"   ");
+            s.close();
+            connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
     public  void deleteAllExercises(){
         try {
             createConnection();

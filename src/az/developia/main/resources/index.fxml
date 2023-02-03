@@ -128,7 +128,10 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </RadioButton>
-                  <Label fx:id="infoLB" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: #9BA19B; -fx-background-radius: 10;" />
+                  <Label fx:id="infoLB" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: #9BA19B; -fx-background-radius: 10;">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
                   <Button fx:id="changeStatusButton" mnemonicParsing="false" onAction="#changeStatusButtonPressed" prefHeight="30.0" prefWidth="131.0" text="Statusu dəyiş" textFill="#f70c0c">
                      <font>
                         <Font name="System Bold" size="14.0" />
