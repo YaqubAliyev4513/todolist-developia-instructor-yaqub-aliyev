@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/user/Documents/GitHub/todolist-developia-instructor-yaqub-aliyev/src/az/developia/main/LauncherClass.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/todolist-developia-instructor-yaqub-aliyev/src/az/developia/main/controller/ExerciseController.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/todolist-developia-instructor-yaqub-aliyev/src/az/developia/main/model/Exercise.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/todolist-developia-instructor-yaqub-aliyev/src/az/developia/main/service/ExerciseService.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/todolist-developia-instructor-yaqub-aliyev/src/az/developia/main/repository/ExerciseRepository.java</file>
+        </group>
     </open-files>
 </project-private>

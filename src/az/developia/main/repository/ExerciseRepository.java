@@ -25,7 +25,7 @@ public class ExerciseRepository {
             Statement s = conn.createStatement();
             s.execute("insert into exercises (task,category,day,registerdate,status) values ('" + e.getTask() + "','" + e.getCategory() + "','" + e.getDay() + "','" + e.getRegisterDate() + "','" + e.getStatus() + "') ");
             s.close();
-            conn.close();
+            
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -36,6 +36,18 @@ public class ExerciseRepository {
             conn = new Database().getConn();
             Statement s = conn.createStatement();
             s.execute("update exercises set task = '" + e.getTask() + "',category = '" + e.getCategory() + "', day = '" + e.getDay() + "', registerdate = '" + e.getRegisterDate() + "' where id="+e.getId()+"   ");
+            s.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
+    public static void deleteExercise(Integer id){
+        try {
+            conn = new Database().getConn();
+            Statement s = conn.createStatement();
+            s.execute("delete from exercises  where id="+id+"   ");
             s.close();
             conn.close();
         } catch (Exception exception) {

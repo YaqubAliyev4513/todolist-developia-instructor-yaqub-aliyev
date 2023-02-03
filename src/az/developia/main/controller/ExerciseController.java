@@ -92,7 +92,7 @@ public class ExerciseController implements Initializable{
     @FXML
     private Button updateButton;
     
-    private ExerciseService exerciseService;
+    private static ExerciseService exerciseService;
     
     
     @FXML
@@ -124,7 +124,16 @@ public class ExerciseController implements Initializable{
     
      @FXML
     void deleteButtonPressed(ActionEvent event) {
-
+         Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
+         
+         if(selectedExercise == null){
+             System.out.println("Element seçilməyib");
+         }else{
+             Integer id  = selectedExercise.getId();
+             exerciseService.deleteExercise(id);
+             loadExercises();
+         }
+         
     }
 
     

@@ -24,6 +24,10 @@ public class ExerciseService {
        exerciseRepository.updateExercise(e);
    }
    
+   public static void deleteExercise(Integer id){
+       exerciseRepository.deleteExercise(id);
+   }
+   
    public static ObservableList<Exercise> getExercises(){
        return exerciseRepository.getExercises();
    }

@@ -36,14 +36,7 @@ public class Database {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-//        finally{
-//            try {
-//               conn.close();
-//                System.out.println("Baglanti kesildi");
-//            } catch (SQLException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
+        
     }
     
     public void disconnect(){
