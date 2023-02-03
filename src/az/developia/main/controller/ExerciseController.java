@@ -104,7 +104,13 @@ public class ExerciseController implements Initializable {
         String task = taskTF.getText();
         String category = String.valueOf(categoryCB.getValue());
         String day = dayTF.getText();
-        LocalDateTime registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
+        LocalDateTime registerDate;
+        if (dateDP.getValue() == null) {
+            registerDate = LocalDateTime.now();
+        } else {
+            registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
+        }
+
         String status = "Həll olunmayan";
 
         if (task.trim().length() > 0 && category != null && day.trim().length() > 0 && registerDate != null) {
@@ -128,11 +134,10 @@ public class ExerciseController implements Initializable {
         if (deleteAllCheckBox.isSelected()) {
 
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Bütün tapşırıqları silməkdə əminsizmi?","Təhlükə",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Bütün tapşırıqları silməkdə əminsizmi?", "Təhlükə", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
                 exerciseService.deleteAllExercises();
             }
-
 
         } else {
             Exercise selectedExercise = exercisesTable.getSelectionModel().getSelectedItem();
@@ -160,7 +165,13 @@ public class ExerciseController implements Initializable {
             String task = taskTF.getText();
             String category = String.valueOf(categoryCB.getValue());
             String day = dayTF.getText();
-            LocalDateTime registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
+            LocalDateTime registerDate;
+            if (dateDP.getValue() == null) {
+                registerDate = LocalDateTime.now();
+            } else {
+                registerDate = LocalDateTime.of(dateDP.getValue(), LocalDateTime.now().toLocalTime());
+            }
+            
             if (task.trim().length() > 0 && category != null && day.trim().length() > 0 && registerDate != null) {
                 Exercise e = new Exercise();
                 e.setId(id);
