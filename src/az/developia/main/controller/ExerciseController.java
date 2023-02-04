@@ -8,6 +8,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
@@ -285,6 +288,12 @@ public class ExerciseController implements Initializable {
         }
 
     }
+    
+    public void searchTFKeyReleased(KeyEvent event){
+       String search = searchTF.getText();
+        loadExercisesBySearch(search);
+        
+    }
 
     private void loadExercises() {
         exercisesTable.setItems(exerciseService.getExercises());
@@ -293,6 +302,17 @@ public class ExerciseController implements Initializable {
     private void loadCategories() {
         categoryCB.getItems().clear();
         categoryCB.getItems().addAll(categoryService.getCategories());
+    }
+    
+    private void loadExercisesBySearch(String search){
+        ObservableList<Exercise> exercises = exerciseService.getExercises();
+        ObservableList<Exercise>  newExercises = FXCollections.observableArrayList();
+        for( int i = 0; i < exercises.toArray().length; i++){
+            if(exercises.get(i).getTask().contains(search)||exercises.get(i).getCategory().contains(search)){
+                newExercises.add(exercises.get(i));
+            }
+        }
+        exercisesTable.setItems(newExercises);
     }
 
     @Override
