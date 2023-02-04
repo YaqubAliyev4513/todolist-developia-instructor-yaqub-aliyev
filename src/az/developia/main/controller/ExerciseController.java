@@ -251,17 +251,17 @@ public class ExerciseController implements Initializable {
 
     @FXML
     void allRBPressed(ActionEvent event) {
-
+       loadExercises();
     }
 
     @FXML
     void completedRBPressed(ActionEvent event) {
-
+        loadExercisesBySearch("Həll olunan");
     }
 
     @FXML
     void notCompletedRBPressed(ActionEvent event) {
-
+        loadExercisesBySearch("Həll olunmayan");
     }
 
     @FXML
@@ -308,7 +308,7 @@ public class ExerciseController implements Initializable {
         ObservableList<Exercise> exercises = exerciseService.getExercises();
         ObservableList<Exercise>  newExercises = FXCollections.observableArrayList();
         for( int i = 0; i < exercises.toArray().length; i++){
-            if(exercises.get(i).getTask().contains(search)||exercises.get(i).getCategory().contains(search)){
+            if(exercises.get(i).getTask().contains(search)||exercises.get(i).getCategory().contains(search)||exercises.get(i).getStatus().contains(search)){
                 newExercises.add(exercises.get(i));
             }
         }
