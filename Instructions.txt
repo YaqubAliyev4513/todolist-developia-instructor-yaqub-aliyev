@@ -1,0 +1,4 @@
+Proyekt Java 19 FX versiyasinda hazirlanib.
+
+az/developia/main/resources/application.properties faylinda propertyleri vermeyi unutmayin
+

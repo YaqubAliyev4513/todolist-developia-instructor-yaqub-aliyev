@@ -5,6 +5,7 @@
 package az.developia.main.repository;
 
 import az.developia.main.model.Exercise;
+import az.developia.main.util.ProjectProperties;
 import java.sql.*;
 import java.time.LocalDateTime;
 import javafx.collections.FXCollections;
@@ -17,12 +18,12 @@ import javafx.collections.ObservableList;
 public class ExerciseRepository {
 
     private Connection connection;
-    
+    private final ProjectProperties properties = new ProjectProperties();
     
     public void createConnection(){
         try {
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/todolist-developia-instructor-yaqub-aliyev", "root", "1234");          
+             Class.forName(properties.getDriverName());
+             connection=DriverManager.getConnection("jdbc:mysql://"+properties.getHost()+":"+properties.getPort()+"/"+properties.getDatabase(), properties.getUsername(), properties.getPassword());          
         } catch (Exception ex) {
             ex.printStackTrace();
         }

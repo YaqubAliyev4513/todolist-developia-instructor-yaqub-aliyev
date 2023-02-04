@@ -60,7 +60,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dateDP" prefHeight="26.0" prefWidth="82.0" style="-fx-background-radius: 10;" />
+                  <DatePicker fx:id="dateDP" prefHeight="26.0" prefWidth="106.0" style="-fx-background-radius: 10;" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
