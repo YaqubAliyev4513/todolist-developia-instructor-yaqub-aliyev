@@ -1,4 +1,12 @@
+AZ:
 Proyekt Java 19 FX versiyasinda hazirlanib.
 
 az/developia/main/resources/application.properties faylinda propertyleri vermeyi unutmayin
+Hemcinin Proyekti run ederken Build and Clean etmeyi unutmayin.
 
+
+EN:
+The project was developed in Java 19 FX version.
+
+Don't forget to set the properties in the az/developia/main/resources/application.properties file
+Also, don't forget to Build and Clean when running the project.
